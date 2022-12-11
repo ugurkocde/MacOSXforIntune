@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
-echo "$(tput setaf 2)Performance Mode enabled$(tput sgr0)"
+echo "Enabling Performance Mode ..."
 
 # massively increase virtualized macOS by disabling spotlight.
-echo "$(tput setaf 2)Disabling spotlight$(tput sgr0)"
+echo "Disabling spotlight ..."
 sudo mdutil -i off -a
 
 if [ -d "/Applications/Company Portal.app" ]; then
-echo "$(tput setaf 2)Company Portal is already installed$(tput sgr0)"
+echo "$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)"
+echo "$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)"
+echo "$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)"
 exit 0
 fi
 
 ## Install Company Portal
-
+echo "Installing Company Portal"
 cd ~/Downloads
 
 # Download the .pkg file using curl
@@ -29,11 +31,11 @@ echo "$(tput setaf 2)Company Portal installed$(tput sgr0)"
 # Build checks if the company portal is installed
 
 messages=(
-  "Performance Mode enabled [✓]"
-  "Disabling spotlight [✓]"
-  "Company Portal is already installed [✓]"
-  "Downloading and installing Company Portal [✓]"
-  "Company Portal installed [✓]"
+  "$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)"
+  "$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)"
+  "$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)"
+  "$(tput setaf 2)Downloading and installing Company Portal [✓]$(tput sgr0)"
+  "$(tput setaf 2)Company Portal installed [✓]$(tput sgr0)"
 )
 
 for message in "${messages[@]}"; do
