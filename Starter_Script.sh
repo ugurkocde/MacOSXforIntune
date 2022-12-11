@@ -69,6 +69,15 @@ messages_systeminfo+=( "$(tput setaf 2)Free Storage: $free_storage$(tput sgr0)" 
 
 # Check Network Requirements - START
 
+echo "$(tput setaf 3)Pinging manage.microsoft.com ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 manage.microsoft.com)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged manage.microsoft.com [✓]$(tput sgr0)" )
+else
+messages_network+=( "$(tput setaf 1)Failed to ping manage.microsoft.com [X]$(tput sgr0)" )
+fi
+
+
 echo "$(tput setaf 3)Pinging apple.com ... [◯]$(tput sgr0)"
 ping_result=$(ping -c 1 apple.com)
 if [ $? -eq 0 ]; then
