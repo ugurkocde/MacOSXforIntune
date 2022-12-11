@@ -20,7 +20,7 @@ sudo curl -LO https://github.com/ugurkocde/MacOSXforIntune/raw/main/CompanyPorta
 sudo installer -pkg *.pkg -target /
 
 # Remove the downloaded .pkg file
-rm /*.pkg
+sudo rm CompanyPortal-Installer.pkg
 echo "$(tput setaf 2)Company Portal installed$(tput sgr0)"
 # Build checks if the company portal is installed
 
