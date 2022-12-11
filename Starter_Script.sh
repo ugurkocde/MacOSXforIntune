@@ -15,10 +15,12 @@ sleep 3
 # Turn on performance mode to dedicate additional system resources
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 echo "$(tput setaf 3)Enabling Performance Mode ... [◯]$(tput sgr0)"
+messages+=("$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)")
 
 # Massively increase virtualized macOS by disabling spotlight.
 echo "$(tput setaf 3)Disabling spotlight ... [◯]$(tput sgr0)"
 sudo mdutil -i off -a
+messages+=("$(tput setaf 2)Spotlight is disabled [✓]$(tput sgr0)")
 
 # Check if FileVault is already enabled
 echo "$(tput setaf 3)Checking if FileVault is enabled ... [◯]$(tput sgr0)"
@@ -59,9 +61,12 @@ fi
 echo "$(tput setaf 3)Checking if Company Portal is already installed ... [◯]$(tput sgr0)"
 
 if [ -d "/Applications/Company Portal.app" ]; then
-echo "$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)"
-echo "$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)"
-echo "$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)"
+    messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
+
+for message in "${messages[@]}"; do
+  echo "$message"
+done
+
 exit 0
 fi
 
@@ -86,9 +91,9 @@ else
     break
 fi
 
-messages+=("$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)")
-messages+=("$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)")
-messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
+
+
+
 
 for message in "${messages[@]}"; do
   echo "$message"
