@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "$(tput setaf 6)$(figlet -f slant 'MacOSX for Intune - Onboarding Script')$(tput sgr0)"
+echo "MacOSX for Intune - Onboarding Script"
 
 echo ""
 echo "This script will do the following:"
