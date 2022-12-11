@@ -29,7 +29,6 @@ sudo installer -pkg *.pkg -target /
 
 # Remove the downloaded .pkg file
 sudo rm CompanyPortal-Installer.pkg
-echo "$(tput setaf 2)Company Portal installed$(tput sgr0)"
 # Build checks if the company portal is installed
 
 messages=(
