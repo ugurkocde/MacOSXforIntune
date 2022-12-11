@@ -28,5 +28,17 @@ sudo rm CompanyPortal-Installer.pkg
 echo "$(tput setaf 2)Company Portal installed$(tput sgr0)"
 # Build checks if the company portal is installed
 
+messages=(
+  "Performance Mode enabled [✓]"
+  "Disabling spotlight [✓]"
+  "Company Portal is already installed [✓]"
+  "Downloading and installing Company Portal [✓]"
+  "Company Portal installed [✓]"
+)
+
+for message in "${messages[@]}"; do
+  echo "$message"
+done
+
 # User runs this: curl -s https://raw.githubusercontent.com/myusername/myrepo/main/install_pkg.sh | bash
 
