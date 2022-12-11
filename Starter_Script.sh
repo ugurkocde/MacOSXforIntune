@@ -12,6 +12,15 @@ echo "  7. If the Company Portal app is not installed, download and install it"
 echo ""
 sleep 3
 
+# Check internet connectivity
+echo "$(tput setaf 3)Checking internet connectivity ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 www.google.com)
+if [ $? -eq 0 ]; then
+echo "$(tput setaf 2)Connected to the internet $(tput sgr0)"
+else
+echo "$(tput setaf 1)Not connected to the internet $(tput sgr0)"
+fi
+
 # Turn on performance mode to dedicate additional system resources
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 echo "$(tput setaf 3)Enabling Performance Mode ... [◯]$(tput sgr0)"
