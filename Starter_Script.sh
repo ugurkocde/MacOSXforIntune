@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
-## Short Summary of what this script will do as a checklist
-# This script will:
-# 1. Enable Performance Mode
-# ...
+echo "This script will do the following:"
+echo "  1. Enable Performance Mode"
+echo "  2. Disable spotlight"
+echo "  3. Check if FileVault is enabled"
+echo "  4. Check if the Company Portal app is installed"
+echo "  5. If the Company Portal app is not installed, download and install it"
+echo ""
+read -p "Press enter to continue, or Ctrl+C to cancel..." -t 3
 
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 echo "Enabling Performance Mode ..."
@@ -46,10 +50,13 @@ sudo installer -pkg *.pkg -target /
 # Remove the downloaded .pkg file
 sudo rm CompanyPortal-Installer.pkg
 
-if [ -d "/Applications/Company Portal.app" ] echo "Successfully installed the Company Portal."; then
+if [ -d "/Applications/Company Portal.app" ]; then
+    echo "Successfully installed the Company Portal."
+else
     echo "Failed to install the Company Portal."
     break
 fi
+
 
 echo "Continuing"
 messages+=("$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)")
@@ -61,5 +68,8 @@ messages+=("$(tput setaf 2)Company Portal installed [✓]$(tput sgr0)")
 for message in "${messages[@]}"; do
   echo "$message"
 done
+
+# Start Company Portal after finishing this script
+open -a "/Applications/Company Portal.app"
 
 # User runs this: curl -s https://raw.githubusercontent.com/myusername/myrepo/main/install_pkg.sh | bash
