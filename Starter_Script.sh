@@ -10,7 +10,7 @@ echo "Disabled spotlight"
 ## Install Company Portal
 
 # Download the .pkg file using curl
-curl -O https://github.com/ugurkocde/MacOSXforIntune/blob/main/CompanyPortal-Installer.pkg
+curl -O https://github.com/ugurkocde/MacOSXforIntune/raw/main/CompanyPortal-Installer.pkg
 echo "Downloading and installing Company Portal"
 
 # Install the .pkg file silently using the installer command
