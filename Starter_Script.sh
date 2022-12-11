@@ -45,17 +45,87 @@ else
   messages+=( "$(tput setaf 1)SIP is NOT enabled. [X]$(tput sgr0)" )
 fi
 
-# Check if the latest version of macOS is installed
-echo "$(tput setaf 3)Checking if the latest version of macOS is installed ... [◯]$(tput sgr0)"
-latest_version=$(curl -s https://developer.apple.com/documentation/macos-release-notes | grep -o 'macOS Ventura * Release Notes' | grep -o '*' | awk -F ' ' '{print $1}')
+# Get system info
 current_version=$(sw_vers -productVersion)
-if [ "$latest_version" == "$current_version" ]; then
-  # The latest version of macOS is installed, add message to messages array
-  messages+=( "$(tput setaf 2)The latest version of macOS is installed. [✓]$(tput sgr0)" )
+messages_systeminfo+=( "$(tput setaf 2)Currently installed macOS Version: $current_version$(tput sgr0)" )
+model_id=$(system_profiler SPHardwareDataType | grep 'Model Identifier' | awk -F ': ' '{print $2}')
+messages_systeminfo+=( "$(tput setaf 2)Model ID: $model_id$(tput sgr0)" )
+serial_number=$(system_profiler SPHardwareDataType | grep 'Serial Number (system)' | awk -F ': ' '{print $2}')
+messages_systeminfo+=( "$(tput setaf 2)Serial Number: $serial_number$(tput sgr0)" )
+ram=$(system_profiler SPHardwareDataType | grep 'Memory' | awk -F ': ' '{print $2}')
+messages_systeminfo+=( "$(tput setaf 2)RAM: $ram$(tput sgr0)" )
+free_storage=$(df -h | grep '/$' | awk '{print $4}')
+messages_systeminfo+=( "$(tput setaf 2)Free Storage: $free_storage$(tput sgr0)" )
+
+
+# Check Network Requirements - START
+
+echo "$(tput setaf 3)Pinging apple.com ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 apple.com)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged apple.com [✓]$(tput sgr0)" )
 else
-  # The latest version of macOS is not installed, add message to messages array
-  messages+=( "$(tput setaf 1)The latest version of macOS is NOT installed. [X]$(tput sgr0)" )
+messages_network+=( "$(tput setaf 1)Failed to ping apple.com [X]$(tput sgr0)" )
 fi
+
+echo "$(tput setaf 3)Pinging itunes.apple.com ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 itunes.apple.com)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged itunes.apple.com [✓]$(tput sgr0)" )
+else
+messages_network+=( "$(tput setaf 1)Failed to ping itunes.apple.com [X]$(tput sgr0)" )
+fi
+
+echo "$(tput setaf 3)Pinging ocsp.apple.com ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 ocsp.apple.com)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged ocsp.apple.com [✓]$(tput sgr0)" )
+else
+
+messages_network+=( "$(tput setaf 1)Failed to ping ocsp.apple.com [X]$(tput sgr0)" )
+fi
+
+echo "$(tput setaf 3)Pinging phobos.apple.com ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 phobos.apple.com)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged phobos.apple.com [✓]$(tput sgr0)" )
+else
+messages_network+=( "$(tput setaf 1)Failed to ping phobos.apple.com [X]$(tput sgr0)" )
+fi
+
+echo "$(tput setaf 3)Pinging phobos.itunes-apple.com.akadns.net ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 phobos.itunes-apple.com.akadns.net)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged phobos.itunes-apple.com.akadns.net [✓]$(tput sgr0)" )
+else
+messages_network+=( "$(tput setaf 1)Failed to ping phobos.itunes-apple.com.akadns.net [X]$(tput sgr0)" )
+fi
+
+echo "$(tput setaf 3)Pinging 5-courier.push.apple.com ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 5-courier.push.apple.com)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged 5-courier.push.apple.com [✓]$(tput sgr0)" )
+else
+messages_network+=( "$(tput setaf 1)Failed to ping 5-courier.push.apple.com [X]$(tput sgr0)" )
+fi
+
+echo "$(tput setaf 3)Pinging ax.itunes.apple.com ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 ax.itunes.apple.com)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged ax.itunes.apple.com [✓]$(tput sgr0)" )
+else
+messages_network+=( "$(tput setaf 1)Failed to ping ax.itunes.apple.com [X]$(tput sgr0)" )
+fi
+
+echo "$(tput setaf 3)Pinging ax.itunes.apple.com.edgesuite.net ... [◯]$(tput sgr0)"
+ping_result=$(ping -c 1 ax.itunes.apple.com.edgesuite.net)
+if [ $? -eq 0 ]; then
+messages_network+=( "$(tput setaf 2)Successfully pinged ax.itunes.apple.com.edgesuite.net [✓]$(tput sgr0)" )
+else
+messages_network+=( "$(tput setaf 1)Failed to ping ax.itunes.apple.com.edgesuite.net [X]$(tput sgr0)" )
+fi
+
+# Check Network Requirements - END
 
 # Check if Company Portal is installed
 echo "$(tput setaf 3)Checking if Company Portal is already installed ... [◯]$(tput sgr0)"
@@ -94,6 +164,14 @@ fi
 messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
 for message in "${messages[@]}"; do
+  echo "$message"
+done
+
+for message in "${messages_systeminfo[@]}"; do
+  echo "$message"
+done
+
+for message in "${messages_network[@]}"; do
   echo "$message"
 done
 
