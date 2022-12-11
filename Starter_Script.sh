@@ -47,7 +47,7 @@ fi
 
 # Check if the latest version of macOS is installed
 echo "$(tput setaf 3)Checking if the latest version of macOS is installed ... [◯]$(tput sgr0)"
-latest_version=$(curl -s https://www.apple.com/support/macos/release-notes/ | grep '<h3>' | head -n 1 | sed 's/<[^>]*>//g')
+latest_version=$(curl -s https://www.apple.com/support/macos/release-notes/ | grep -o '<h3>.*</h3>' | awk -F '[><]' '{print $3}')
 current_version=$(sw_vers -productVersion)
 if [ "$latest_version" == "$current_version" ]; then
   # The latest version of macOS is installed, add message to messages array
@@ -91,9 +91,7 @@ else
     break
 fi
 
-
-
-
+messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
 for message in "${messages[@]}"; do
   echo "$message"
