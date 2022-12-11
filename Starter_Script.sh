@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-
+echo ""
 echo "MacOSX for Intune - Onboarding Script"
+echo "  Author: Ugur Koc, Version: 1.0"
 
 echo ""
 echo "This script will do the following:"
