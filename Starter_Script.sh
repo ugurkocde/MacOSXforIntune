@@ -28,6 +28,31 @@ else
     messages+=( "$(tput setaf 1)FileVault is NOT enabled. [X]$(tput sgr0)" )
 fi
 
+# Check if SIP (System Integrity Protection) is enabled
+echo "$(tput setaf 3)Checking if SIP is enabled ... [◯]$(tput sgr0)"
+if csrutil status | grep "enabled" > /dev/null; then
+  # SIP is enabled, add message to messages array
+  echo "SIP is enabled."
+  messages+=( "$(tput setaf 2)SIP is enabled. [✓]$(tput sgr0)" )
+else
+  # SIP is not enabled, add message to messages array
+  echo "SIP is not enabled."
+  messages+=( "$(tput setaf 1)SIP is NOT enabled. [X]$(tput sgr0)" )
+fi
+
+# Check if the latest version of macOS is installed
+echo "$(tput setaf 3)Checking if the latest version of macOS is installed ... [◯]$(tput sgr0)"
+latest_version=$(curl -s https://www.apple.com/support/macos/release-notes/ | grep '<h3>' | head -n 1 | sed 's/<[^>]*>//g')
+current_version=$(sw_vers -productVersion)
+if [ "$latest_version" == "$current_version" ]; then
+  # The latest version of macOS is installed, add message to messages array
+  messages+=( "$(tput setaf 2)The latest version of macOS is installed. [✓]$(tput sgr0)" )
+else
+  # The latest version of macOS is not installed, add message to messages array
+  messages+=( "$(tput setaf 1)The latest version of macOS is NOT installed. [X]$(tput sgr0)" )
+fi
+
+
 echo "$(tput setaf 3)Checking if Company Portal is already installed ... [◯]$(tput sgr0)"
 
 if [ -d "/Applications/Company Portal.app" ]; then
