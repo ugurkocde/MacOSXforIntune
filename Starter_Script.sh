@@ -193,19 +193,19 @@ messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
 for message in "${messages[@]}"; do
     echo ""
-    echo "Check summary"
+    echo "Check summary \u2139"
     echo "$message"
 done
 
 for message in "${messages_systeminfo[@]}"; do
     echo ""
-    echo "System Infos"
+    echo "System Infos \u2139"
     echo "$message"
 done
 
 for message in "${messages_network[@]}"; do
     echo ""
-    echo "Network Requirements"
+    echo "Network Requirements \u2139"
     echo "$message"
 done
 
