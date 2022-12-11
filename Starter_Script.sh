@@ -17,7 +17,7 @@ echo "Downloading and installing Company Portal"
 installer -pkg *.pkg -target /
 
 # Remove the downloaded .pkg file
-rm /*.pkg
+# rm /*.pkg
 echo "Company Portal installed"
 # Build checks if the company portal is installed
 
