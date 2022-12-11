@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+## Short Summary of what this script will do as a checklist
+# This script will:
+# 1. Enable Performance Mode
+# ...
+
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 echo "Enabling Performance Mode ..."
 
@@ -7,7 +12,16 @@ echo "Enabling Performance Mode ..."
 echo "Disabling spotlight ..."
 sudo mdutil -i off -a
 
-# Can not automate FileVault enable because user:pw is required
+# Check if FileVault is already enabled
+echo "Checking if FileVault is enabled ..."
+if fdesetup status | grep "FileVault is On" > /dev/null; then
+  # FileVault is already enabled, add message to messages array
+    echo "FileVault is already enabled."
+    messages+=( "$(tput setaf 2)FileVault is enabled. [✓]$(tput sgr0)" )
+else
+    echo "FileVault is not enabled."
+    messages+=( "$(tput setaf 1)FileVault is NOT enabled. [X]$(tput sgr0)" )
+fi
 
 echo "Checking if Company Portal is already installed ..."
 
@@ -31,16 +45,18 @@ sudo installer -pkg *.pkg -target /
 
 # Remove the downloaded .pkg file
 sudo rm CompanyPortal-Installer.pkg
-echo "$(tput setaf 2)Company Portal installed$(tput sgr0)"
-# Build checks if the company portal is installed
 
-messages=(
-  "$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)"
-  "$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)"
-  "$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)"
-  "$(tput setaf 2)Downloading and installing Company Portal [✓]$(tput sgr0)"
-  "$(tput setaf 2)Company Portal installed [✓]$(tput sgr0)"
-)
+if [ -d "/Applications/Company Portal.app" ] echo "Successfully installed the Company Portal."; then
+    echo "Failed to install the Company Portal."
+    break
+fi
+
+echo "Continuing"
+messages+=("$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)")
+messages+=("$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)")
+messages+=("$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)")
+messages+=("$(tput setaf 2)Downloading and installing Company Portal [✓]$(tput sgr0)")
+messages+=("$(tput setaf 2)Company Portal installed [✓]$(tput sgr0)")
 
 for message in "${messages[@]}"; do
   echo "$message"
