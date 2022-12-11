@@ -192,15 +192,21 @@ fi
 messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
 for message in "${messages[@]}"; do
-  echo "$message"
+    echo ""
+    echo "Check summary"
+    echo "$message"
 done
 
 for message in "${messages_systeminfo[@]}"; do
-  echo "$message"
+    echo ""
+    echo "System Infos"
+    echo "$message"
 done
 
 for message in "${messages_network[@]}"; do
-  echo "$message"
+    echo ""
+    echo "Network Requirements"
+    echo "$message"
 done
 
 # Start Company Portal after finishing this script
