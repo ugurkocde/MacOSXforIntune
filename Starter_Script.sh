@@ -5,15 +5,18 @@ echo "This script will do the following:"
 echo "  1. Enable Performance Mode"
 echo "  2. Disable spotlight"
 echo "  3. Check if FileVault is enabled"
-echo "  4. Check if the Company Portal app is installed"
-echo "  5. If the Company Portal app is not installed, download and install it"
+echo "  4. Check if SIP (System Integrity Protection) is enabled"
+echo "  5. Check if the latest version of macOS is installed"
+echo "  6. Check if the Company Portal app is installed"
+echo "  7. If the Company Portal app is not installed, download and install it"
 echo ""
 sleep 3
 
+# Turn on performance mode to dedicate additional system resources
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 echo "$(tput setaf 3)Enabling Performance Mode ... [◯]$(tput sgr0)"
 
-# massively increase virtualized macOS by disabling spotlight.
+# Massively increase virtualized macOS by disabling spotlight.
 echo "$(tput setaf 3)Disabling spotlight ... [◯]$(tput sgr0)"
 sudo mdutil -i off -a
 
@@ -52,7 +55,7 @@ else
   messages+=( "$(tput setaf 1)The latest version of macOS is NOT installed. [X]$(tput sgr0)" )
 fi
 
-
+# Check if Company Portal is installed
 echo "$(tput setaf 3)Checking if Company Portal is already installed ... [◯]$(tput sgr0)"
 
 if [ -d "/Applications/Company Portal.app" ]; then
