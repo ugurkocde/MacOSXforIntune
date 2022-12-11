@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Add Headline
+echo "$(tput setaf 6)$(figlet -f slant 'MacOSX for Intune - Onboarding Script')$(tput sgr0)"
 
 echo ""
 echo "This script will do the following:"
