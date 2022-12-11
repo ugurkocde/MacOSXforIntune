@@ -146,6 +146,14 @@ for message in "${messages[@]}"; do
   echo "$message"
 done
 
+for message in "${messages_systeminfo[@]}"; do
+  echo "$message"
+done
+
+for message in "${messages_network[@]}"; do
+  echo "$message"
+done
+
 exit 0
 fi
 
