@@ -47,7 +47,7 @@ fi
 
 # Check if the latest version of macOS is installed
 echo "$(tput setaf 3)Checking if the latest version of macOS is installed ... [◯]$(tput sgr0)"
-latest_version=$(curl -s https://www.apple.com/support/macos/release-notes/ | grep -o '<h3>.*</h3>' | awk -F '[><]' '{print $3}')
+latest_version=$(curl -s https://developer.apple.com/documentation/macos-release-notes | grep -o 'macOS Ventura * Release Notes' | grep -o '*' | awk -F ' ' '{print $1}')
 current_version=$(sw_vers -productVersion)
 if [ "$latest_version" == "$current_version" ]; then
   # The latest version of macOS is installed, add message to messages array
