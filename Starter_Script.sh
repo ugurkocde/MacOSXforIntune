@@ -7,6 +7,8 @@ echo "Enabling Performance Mode ..."
 echo "Disabling spotlight ..."
 sudo mdutil -i off -a
 
+echo "Checking if Company Portal is already installed ..."
+
 if [ -d "/Applications/Company Portal.app" ]; then
 echo "$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)"
 echo "$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)"
@@ -19,7 +21,7 @@ echo "Installing Company Portal"
 cd ~/Downloads
 
 # Download the .pkg file using curl
-echo "$(tput setaf 2)Downloading and installing Company Portal$(tput sgr0)"
+echo "$(tput setaf 2)Downloading and installing Company Portal ...$(tput sgr0)"
 sudo curl -LO https://github.com/ugurkocde/MacOSXforIntune/raw/main/CompanyPortal-Installer.pkg -o ~/Downloads/CompanyPortal-Installer.pkg
 
 # Install the .pkg file silently using the installer command
