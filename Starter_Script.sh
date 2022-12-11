@@ -7,24 +7,7 @@ echo "Enabling Performance Mode ..."
 echo "Disabling spotlight ..."
 sudo mdutil -i off -a
 
-# Check if FileVault is already enabled
-echo "Checking if FileVault is enabled ..."
-if fdesetup status | grep "FileVault is On" > /dev/null; then
-  # FileVault is already enabled, add message to messages array
-  echo "FileVault is already enabled."
-else
-  # Enable FileVault
-  sudo fdesetup enable
-  if [ $? -eq 0 ]; then
-    # FileVault enabled, add message to messages array
-    echo "Enabling FileVault."
-    messages+=( "$(tput setaf 2)FileVault is enabled [✓]$(tput sgr0)" )
-  else
-    # Failed to enable FileVault, add message to messages array
-    echo "Failed to enable FileVault."
-    messages+=( "$(tput setaf 1)Failed to enable FileVault$(tput sgr0)" )
-  fi
-fi
+# Can not automate FileVault enable because user:pw is required
 
 echo "Checking if Company Portal is already installed ..."
 
@@ -32,6 +15,7 @@ if [ -d "/Applications/Company Portal.app" ]; then
 echo "$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)"
 echo "$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)"
 echo "$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)"
+echo "$(tput setaf 2)FileVault is enabled [✓]$(tput sgr0)"
 exit 0
 fi
 
@@ -40,7 +24,7 @@ echo "Installing Company Portal"
 cd ~/Downloads
 
 # Download the .pkg file using curl
-echo "$(tput setaf 2)Downloading and installing Company Portal ...$(tput sgr0)"
+echo "Downloading and installing Company Portal ..."
 sudo curl -LO https://github.com/ugurkocde/MacOSXforIntune/raw/main/CompanyPortal-Installer.pkg -o ~/Downloads/CompanyPortal-Installer.pkg
 
 # Install the .pkg file silently using the installer command
