@@ -8,6 +8,8 @@ echo "  3. Check if FileVault is enabled"
 echo "  4. Check if SIP (System Integrity Protection) is enabled"
 echo "  5. Check if the latest version of macOS is installed"
 echo "  6. Check if the Company Portal app is installed"
+echo "  6. Check System Infos"
+echo "  6. Check Network Requirements"
 echo "  7. If the Company Portal app is not installed, download and install it"
 echo ""
 sleep 3
