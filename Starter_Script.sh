@@ -3,11 +3,14 @@
 echo "This script will do the following:"
 echo "  1. Enable Performance Mode"
 echo "  2. Disable spotlight"
-echo "  3. Check if FileVault is enabled"
-echo "  4. Check if the Company Portal app is installed"
+echo "  3. Check if FileVault is already enabled"
+echo "  4. Check if the Company Portal app is already installed"
 echo "  5. If the Company Portal app is not installed, download and install it"
+echo "  6. Print a list of messages indicating the status of each step"
 echo ""
-read -p "Press enter to continue, or Ctrl+C to cancel..." -t 3
+timeout 3s 
+read -p "Press enter to continue, or Ctrl+C to cancel..."
+
 
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 echo "Enabling Performance Mode ..."
