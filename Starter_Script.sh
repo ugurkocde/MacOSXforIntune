@@ -14,7 +14,7 @@ cd ~/Downloads
 
 # Download the .pkg file using curl
 echo "Downloading and installing Company Portal"
-curl -O "https://github.com/ugurkocde/MacOSXforIntune/blob/main/CompanyPortal-Installer.pkg?raw=true"
+curl -O https://github.com/ugurkocde/MacOSXforIntune/raw/main/CompanyPortal-Installer.pkg
 
 
 
