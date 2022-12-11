@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
-echo "Performance Mode enabled"
+echo "$(tput setaf 2)Performance Mode enabled$(tput sgr0)"
 
 # massively increase virtualized macOS by disabling spotlight.
-echo "Disabling spotlight"
+echo "$(tput setaf 2)Disabling spotlight$(tput sgr0)"
 sudo mdutil -i off -a
 
 
@@ -21,7 +21,7 @@ sudo curl -LO https://github.com/ugurkocde/MacOSXforIntune/raw/main/CompanyPorta
 
 # Remove the downloaded .pkg file
 sudo rm CompanyPortal-Installer.pkg
-echo "Company Portal installed"
+echo "$(tput setaf 2)Company Portal installed$(tput sgr0)"
 # Build checks if the company portal is installed
 
 # User runs this: curl -s https://raw.githubusercontent.com/myusername/myrepo/main/install_pkg.sh | bash
