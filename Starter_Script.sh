@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
 echo ""
+echo ""
+echo ""
+echo ""
+echo ""
 echo "This script will do the following:"
 echo "  1. Enable Performance Mode"
 echo "  2. Disable spotlight"
-echo "  3. Check if FileVault is already enabled"
-echo "  4. Check if the Company Portal app is already installed"
+echo "  3. Check if FileVault is enabled"
+echo "  4. Check if the Company Portal app is installed"
 echo "  5. If the Company Portal app is not installed, download and install it"
-echo "  6. Print a list of messages indicating the status of each step"
 echo ""
 sleep 3
 
