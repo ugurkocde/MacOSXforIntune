@@ -15,7 +15,6 @@ if [ -d "/Applications/Company Portal.app" ]; then
 echo "$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)"
 echo "$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)"
 echo "$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)"
-echo "$(tput setaf 2)FileVault is enabled [✓]$(tput sgr0)"
 exit 0
 fi
 
