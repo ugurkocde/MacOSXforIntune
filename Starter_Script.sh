@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
 echo ""
-echo ""
-echo ""
-echo ""
-echo ""
 echo "This script will do the following:"
 echo "  1. Enable Performance Mode"
 echo "  2. Disable spotlight"
@@ -15,14 +11,14 @@ echo ""
 sleep 3
 
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
-echo "Enabling Performance Mode ..."
+echo "$(tput setaf 3)Enabling Performance Mode ... [◯]$(tput sgr0)"
 
 # massively increase virtualized macOS by disabling spotlight.
 echo "Disabling spotlight ..."
 sudo mdutil -i off -a
 
 # Check if FileVault is already enabled
-echo "Checking if FileVault is enabled ..."
+echo "$(tput setaf 3)Checking if FileVault is enabled ... [◯]$(tput sgr0)"
 if fdesetup status | grep "FileVault is On" > /dev/null; then
   # FileVault is already enabled, add message to messages array
     echo "FileVault is already enabled."
@@ -32,7 +28,7 @@ else
     messages+=( "$(tput setaf 1)FileVault is NOT enabled. [X]$(tput sgr0)" )
 fi
 
-echo "Checking if Company Portal is already installed ..."
+echo "$(tput setaf 3)Checking if Company Portal is already installed ... [◯]$(tput sgr0)"
 
 if [ -d "/Applications/Company Portal.app" ]; then
 echo "$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)"
@@ -62,8 +58,6 @@ else
     break
 fi
 
-
-echo "Continuing"
 messages+=("$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)")
 messages+=("$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)")
 messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
