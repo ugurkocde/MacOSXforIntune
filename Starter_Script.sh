@@ -155,21 +155,21 @@ echo "$(tput setaf 3)Checking if Company Portal is already installed ... [◯]$(
 if [ -d "/Applications/Company Portal.app" ]; then
     messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
+echo ""
+echo "Check Results"
 for message in "${messages[@]}"; do
-    echo ""
-    echo "Check summary \u2139"
     echo "$message"
 done
 
+echo ""
+echo "System Infos"
 for message in "${messages_systeminfo[@]}"; do
-    echo ""
-    echo "System Infos \u2139"
     echo "$message"
 done
 
+echo ""
+echo "Network Requirements"
 for message in "${messages_network[@]}"; do
-    echo ""
-    echo "Network Requirements \u2139"
     echo "$message"
 done
 
@@ -199,21 +199,21 @@ fi
 
 messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
+echo ""
+echo "Check Results"
 for message in "${messages[@]}"; do
-    echo ""
-    echo "Check summary \u2139"
     echo "$message"
 done
 
+echo ""
+echo "System Infos"
 for message in "${messages_systeminfo[@]}"; do
-    echo ""
-    echo "System Infos \u2139"
     echo "$message"
 done
 
+echo ""
+echo "Network Requirements"
 for message in "${messages_network[@]}"; do
-    echo ""
-    echo "Network Requirements \u2139"
     echo "$message"
 done
 
