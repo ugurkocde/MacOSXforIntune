@@ -15,7 +15,7 @@ echo "Downloading and installing Company Portal"
 sudo curl -LO https://github.com/ugurkocde/MacOSXforIntune/raw/main/CompanyPortal-Installer.pkg
 
 # Install the .pkg file silently using the installer command
-sudo installer -pkg *.pkg -target /
+# sudo installer -pkg *.pkg -target /
 
 # Remove the downloaded .pkg file
 sudo rm /*.pkg
