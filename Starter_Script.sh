@@ -8,7 +8,7 @@ echo "  4. Check if the Company Portal app is already installed"
 echo "  5. If the Company Portal app is not installed, download and install it"
 echo "  6. Print a list of messages indicating the status of each step"
 echo ""
-timeout 3s 
+sleep 3
 read -p "Press enter to continue, or Ctrl+C to cancel..."
 
 
