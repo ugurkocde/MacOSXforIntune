@@ -14,7 +14,7 @@ sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-
 echo "$(tput setaf 3)Enabling Performance Mode ... [◯]$(tput sgr0)"
 
 # massively increase virtualized macOS by disabling spotlight.
-echo "Disabling spotlight ..."
+echo "$(tput setaf 3)Disabling spotlight ... [◯]$(tput sgr0)"
 sudo mdutil -i off -a
 
 # Check if FileVault is already enabled
@@ -38,11 +38,11 @@ exit 0
 fi
 
 ## Install Company Portal
-echo "Installing Company Portal"
+echo "$(tput setaf 3)Installing Company Portal ... [◯]$(tput sgr0)"
 cd ~/Downloads
 
 # Download the .pkg file using curl
-echo "Downloading and installing Company Portal ..."
+echo "$(tput setaf 3)Downloading and installing Company Portal ... [◯]$(tput sgr0)"
 sudo curl -LO https://github.com/ugurkocde/MacOSXforIntune/raw/main/CompanyPortal-Installer.pkg -o ~/Downloads/CompanyPortal-Installer.pkg
 
 # Install the .pkg file silently using the installer command
