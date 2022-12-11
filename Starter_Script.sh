@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Add Headline
+
 echo ""
 echo "This script will do the following:"
 echo "  1. Enable Performance Mode"
