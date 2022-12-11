@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo ""
 echo "This script will do the following:"
 echo "  1. Enable Performance Mode"
 echo "  2. Disable spotlight"
@@ -9,8 +10,6 @@ echo "  5. If the Company Portal app is not installed, download and install it"
 echo "  6. Print a list of messages indicating the status of each step"
 echo ""
 sleep 3
-read -p "Press enter to continue, or Ctrl+C to cancel..."
-
 
 sudo nvram boot-args="serverperfmode=1 $(nvram boot-args 2>/dev/null | cut -f 2-)"
 echo "Enabling Performance Mode ..."
@@ -64,9 +63,7 @@ fi
 echo "Continuing"
 messages+=("$(tput setaf 2)Performance Mode enabled [✓]$(tput sgr0)")
 messages+=("$(tput setaf 2)Disabling spotlight [✓]$(tput sgr0)")
-messages+=("$(tput setaf 2)Company Portal is already installed [✓]$(tput sgr0)")
-messages+=("$(tput setaf 2)Downloading and installing Company Portal [✓]$(tput sgr0)")
-messages+=("$(tput setaf 2)Company Portal installed [✓]$(tput sgr0)")
+messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
 for message in "${messages[@]}"; do
   echo "$message"
