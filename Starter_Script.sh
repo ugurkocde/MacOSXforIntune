@@ -156,15 +156,21 @@ if [ -d "/Applications/Company Portal.app" ]; then
     messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
 for message in "${messages[@]}"; do
-  echo "$message"
+    echo ""
+    echo "Check summary \u2139"
+    echo "$message"
 done
 
 for message in "${messages_systeminfo[@]}"; do
-  echo "$message"
+    echo ""
+    echo "System Infos \u2139"
+    echo "$message"
 done
 
 for message in "${messages_network[@]}"; do
-  echo "$message"
+    echo ""
+    echo "Network Requirements \u2139"
+    echo "$message"
 done
 
 exit 0
