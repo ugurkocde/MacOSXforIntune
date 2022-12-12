@@ -202,19 +202,19 @@ fi
 messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
 echo ""
-echo "Check Results"
+echo " -- Check Results --"
 for message in "${messages[@]}"; do
     echo "$message"
 done
 
 echo ""
-echo "System Infos"
+echo " -- System Infos --"
 for message in "${messages_systeminfo[@]}"; do
     echo "$message"
 done
 
 echo ""
-echo "Network Requirements"
+echo " -- Network Requirements --"
 for message in "${messages_network[@]}"; do
     echo "$message"
 done
