@@ -158,22 +158,26 @@ if [ -d "/Applications/Company Portal.app" ]; then
     messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
 echo ""
-echo "Check Results"
+echo " -- Check Results --"
 for message in "${messages[@]}"; do
     echo "$message"
 done
 
 echo ""
-echo "System Infos"
+echo " -- System Infos --"
 for message in "${messages_systeminfo[@]}"; do
     echo "$message"
 done
 
 echo ""
-echo "Network Requirements"
+echo " -- Network Requirements --"
 for message in "${messages_network[@]}"; do
     echo "$message"
 done
+
+# Show a notification
+echo "Showing Notification that script ran successfully"
+osascript -e 'display notification "Script ran succefully." with title "MacOSX for Intune - Onboarding Script"'
 
 exit 0
 fi
@@ -223,7 +227,7 @@ done
 echo "Opening Company Portal"
 open -a "/Applications/Company Portal.app"
 
-# SHow a notification
+# Show a notification
 echo "Showing Notification that script ran successfully"
 osascript -e 'display notification "Script ran succefully." with title "MacOSX for Intune - Onboarding Script"'
 
