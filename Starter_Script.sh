@@ -49,15 +49,15 @@ else
 fi
 
 # Check if SIP (System Integrity Protection) is enabled
-echo "$(tput setaf 3)Checking if SIP is enabled ... [◯]$(tput sgr0)"
+echo "$(tput setaf 3)Checking if SIP (System Integrity Protection) is enabled ... [◯]$(tput sgr0)"
 if csrutil status | grep "enabled" > /dev/null; then
   # SIP is enabled, add message to messages array
-  echo "SIP is enabled."
-  messages+=( "$(tput setaf 2)SIP is enabled. [✓]$(tput sgr0)" )
+  echo "SIP (System Integrity Protection) is enabled."
+  messages+=( "$(tput setaf 2)SIP (System Integrity Protection) is enabled. [✓]$(tput sgr0)" )
 else
   # SIP is not enabled, add message to messages array
-  echo "SIP is not enabled."
-  messages+=( "$(tput setaf 1)SIP is NOT enabled. [X]$(tput sgr0)" )
+  echo "SIP (System Integrity Protection) is not enabled."
+  messages+=( "$(tput setaf 1)SIP (System Integrity Protection) is NOT enabled. [X]$(tput sgr0)" )
 fi
 
 # Get system info
