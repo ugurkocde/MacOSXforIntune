@@ -220,8 +220,11 @@ for message in "${messages_network[@]}"; do
 done
 
 # Start Company Portal after finishing this script
-
 echo "Opening Company Portal"
 open -a "/Applications/Company Portal.app"
+
+# SHow a notification
+echo "Showing Notification that script ran successfully"
+osascript -e 'display notification "Script ran succefully." with title "MacOSX for Intune - Onboarding Script"'
 
 # User runs this: curl -s https://raw.githubusercontent.com/myusername/myrepo/main/install_pkg.sh | bash
