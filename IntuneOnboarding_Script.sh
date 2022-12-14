@@ -76,7 +76,7 @@ messages_systeminfo+=("$(tput setaf 2)Free Storage: $free_storage$(tput sgr0)")
 # Check Network Requirements - START
 
 echo "$(tput setaf 3)Pinging manage.microsoft.com ... [◯]$(tput sgr0)"
-ping_result=$(nc -z manage.microsoft.com 443)
+ping_result=$(nc -z manage.microsoft.com 443 > /dev/null)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged manage.microsoft.com [✓]$(tput sgr0)")
 else
