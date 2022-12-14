@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 echo ""
-echo "MacOSX for Intune - Onboarding Script"
-echo "  Author: Ugur Koc, Version: 1.0"
-echo "  Website: www.ugurkoc.de, Twitter: @ugurkocde"
-
-echo "$(tput sgr 0 3)Test123 132 123$(tput sgr 0)"
-
-echo "$(tput sgr 0 4)Test123 132 123$(tput sgr 0)"
+echo "$(tput sgr 0 3)MacOSX for Intune - Onboarding Script$(tput sgr 0)"
+echo "Author: Ugur Koc, Version: 1.0"
+echo "Website: www.ugurkoc.de, Twitter: @ugurkocde"
 
 echo ""
 echo "This script will do the following:"
