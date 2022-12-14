@@ -76,7 +76,7 @@ messages_systeminfo+=("$(tput setaf 2)Free Storage: $free_storage$(tput sgr0)")
 # Check Network Requirements - START
 
 echo "$(tput setaf 3)Pinging manage.microsoft.com ... [◯]$(tput sgr0)"
-ping_result=$(nc -z manage.microsoft.com 443 > /dev/null)
+ping_result=$(nc -z manage.microsoft.com 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged manage.microsoft.com [✓]$(tput sgr0)")
 else
@@ -84,7 +84,7 @@ else
 fi
 
 echo "$(tput setaf 3)Pinging apple.com ... [◯]$(tput sgr0)"
-ping_result=$(ping -c 1 apple.com)
+ping_result=$(nc -z apple.com 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged apple.com [✓]$(tput sgr0)")
 else
@@ -92,7 +92,7 @@ else
 fi
 
 echo "$(tput setaf 3)Pinging itunes.apple.com ... [◯]$(tput sgr0)"
-ping_result=$(ping -c 1 itunes.apple.com)
+ping_result=$(nc -z itunes.apple.com 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged itunes.apple.com [✓]$(tput sgr0)")
 else
@@ -100,7 +100,7 @@ else
 fi
 
 echo "$(tput setaf 3)Pinging ocsp.apple.com ... [◯]$(tput sgr0)"
-ping_result=$(ping -c 1 ocsp.apple.com)
+ping_result=$(nc -z ocsp.apple.com 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged ocsp.apple.com [✓]$(tput sgr0)")
 else
@@ -109,7 +109,7 @@ else
 fi
 
 echo "$(tput setaf 3)Pinging phobos.apple.com ... [◯]$(tput sgr0)"
-ping_result=$(ping -c 1 phobos.apple.com)
+ping_result=$(nc -z phobos.apple.com 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged phobos.apple.com [✓]$(tput sgr0)")
 else
@@ -117,7 +117,7 @@ else
 fi
 
 echo "$(tput setaf 3)Pinging phobos.itunes-apple.com.akadns.net ... [◯]$(tput sgr0)"
-ping_result=$(ping -c 1 phobos.itunes-apple.com.akadns.net)
+ping_result=$(nc -z phobos.itunes-apple.com.akadns.net 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged phobos.itunes-apple.com.akadns.net [✓]$(tput sgr0)")
 else
@@ -125,7 +125,7 @@ else
 fi
 
 echo "$(tput setaf 3)Pinging 5-courier.push.apple.com ... [◯]$(tput sgr0)"
-ping_result=$(ping -c 1 5-courier.push.apple.com)
+ping_result=$(nc -z 5-courier.push.apple.com 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged 5-courier.push.apple.com [✓]$(tput sgr0)")
 else
@@ -133,7 +133,7 @@ else
 fi
 
 echo "$(tput setaf 3)Pinging ax.itunes.apple.com ... [◯]$(tput sgr0)"
-ping_result=$(ping -c 1 ax.itunes.apple.com)
+ping_result=$(nc -z ax.itunes.apple.com 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged ax.itunes.apple.com [✓]$(tput sgr0)")
 else
@@ -141,7 +141,7 @@ else
 fi
 
 echo "$(tput setaf 3)Pinging ax.itunes.apple.com.edgesuite.net ... [◯]$(tput sgr0)"
-ping_result=$(ping -c 1 ax.itunes.apple.com.edgesuite.net)
+ping_result=$(nc -z ax.itunes.apple.com.edgesuite.net 443)
 if [ $? -eq 0 ]; then
     messages_network+=("$(tput setaf 2)Successfully pinged ax.itunes.apple.com.edgesuite.net [✓]$(tput sgr0)")
 else
