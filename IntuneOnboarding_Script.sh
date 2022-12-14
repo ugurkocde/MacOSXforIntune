@@ -154,6 +154,7 @@ fi
 echo "$(tput setaf 3)Checking if Company Portal is already installed ... [◯]$(tput sgr0)"
 
 if [ -d "/Applications/Company Portal.app" ]; then
+    echo "Company Portal is installed."
     messages+=("$(tput setaf 2)Company Portal is installed [✓]$(tput sgr0)")
 
     echo ""
