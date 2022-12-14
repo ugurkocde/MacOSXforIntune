@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  container1:
+    container_name: MacBook_Pro_M2
+    image: sickcodes/docker-osx:ventura
+    devices:
+      - /dev/kvm
+    environment:
+      - RAM=8
+      - CORES=4
+      - DISPLAY=${DISPLAY:-:0.0}
+      - GENERATE_UNIQUE=true
+      - DEVICE_MODEL="Mac14,7"
+    ports:
+      - 50922:10022
+    volumes:
+      - /mnt/wslg/.X11-unix:/tmp/.X11-unix
+    labels:
+      - com.host.description="Intune"
+
+
+  container2:
+    container_name: MacBook_Pro_M1
+    image: sickcodes/docker-osx:ventura
+    devices:
+      - /dev/kvm
+    environment:
+      - RAM=8
+      - CORES=4
+      - DISPLAY=${DISPLAY:-:0.0}
+      - GENERATE_UNIQUE=true
+      - DEVICE_MODEL="MacBookPro18,3"
+    ports:
+      - 50923:10022
+    volumes:
+      - /mnt/wslg/.X11-unix:/tmp/.X11-unix
+    labels:
+      - com.host.description="Intune"
+
+
+  container3:
+    container_name: MacBook_Pro_Intel 
+    image: sickcodes/docker-osx:ventura
+    devices:
+      - /dev/kvm
+    environment:
+      - RAM=8
+      - CORES=4
+      - DISPLAY=${DISPLAY:-:0.0}
+      - GENERATE_UNIQUE=true
+      - DEVICE_MODEL="MacBookPro16,2"
+    ports:
+      - 50924:10022
+    volumes:
+      - /mnt/wslg/.X11-unix:/tmp/.X11-unix
+    labels:
+      - com.host.description="Intune"
