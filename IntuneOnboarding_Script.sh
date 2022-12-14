@@ -6,6 +6,8 @@ echo "  Website: www.ugurkoc.de, Twitter: @ugurkocde"
 
 echo "$(tput sgr 0 3)Test123 132 123$(tput sgr 0)"
 
+echo "$(tput sgr 0 4)Test123 132 123$(tput sgr 0)"
+
 echo ""
 echo "This script will do the following:"
 echo "  1. Enable Performance Mode"
