@@ -10,8 +10,9 @@ services:
       - RAM=8
       - CORES=4
       - DISPLAY=${DISPLAY:-:0.0}
-      - GENERATE_UNIQUE=true
+      - GENERATE_UNIQUE="true"
       - DEVICE_MODEL="Mac14,7"
+      - MASTER_PLIST_URL=https://raw.githubusercontent.com/sickcodes/Docker-OSX/master/custom/config-nopicker-custom.plist
     ports:
       - 50922:10022
     volumes:
@@ -29,8 +30,9 @@ services:
       - RAM=8
       - CORES=4
       - DISPLAY=${DISPLAY:-:0.0}
-      - GENERATE_UNIQUE=true
-      - DEVICE_MODEL="MacBookPro18,3"
+      - GENERATE_UNIQUE="true"
+      - DEVICE_MODEL="MacBookPro17,1"
+      - MASTER_PLIST_URL=https://raw.githubusercontent.com/sickcodes/Docker-OSX/master/custom/config-nopicker-custom.plist
     ports:
       - 50923:10022
     volumes:
@@ -48,8 +50,9 @@ services:
       - RAM=8
       - CORES=4
       - DISPLAY=${DISPLAY:-:0.0}
-      - GENERATE_UNIQUE=true
+      - GENERATE_UNIQUE="true"
       - DEVICE_MODEL="MacBookPro16,2"
+      - MASTER_PLIST_URL=https://raw.githubusercontent.com/sickcodes/Docker-OSX/master/custom/config-nopicker-custom.plist
     ports:
       - 50924:10022
     volumes:
